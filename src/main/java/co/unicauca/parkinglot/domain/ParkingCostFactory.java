@@ -26,6 +26,7 @@ public class ParkingCostFactory {
         dictionary.put(TypeEnum.CAR, new CarParkingCost());
         dictionary.put(TypeEnum.MOTO, new MotoParkingCost());
         dictionary.put(TypeEnum.TRUCK, new TruckParkingCost());
+        
     }
      /**
      * Devuelve la instancia de la clase
@@ -39,7 +40,7 @@ public class ParkingCostFactory {
         return instance;
     }
     
-    public IParkingCost getDelivery(TypeEnum type) {
+    public IParkingCost getType(TypeEnum type) {
         IParkingCost result = null;
         if (dictionary.containsKey(type)) {
             result = dictionary.get(type);

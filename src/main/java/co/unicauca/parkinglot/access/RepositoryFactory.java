@@ -39,7 +39,6 @@ public class RepositoryFactory {
                 result = new VehicleRepository();
                 break;
         }
-
         return result;
 
     }

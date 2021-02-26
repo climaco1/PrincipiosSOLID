@@ -29,7 +29,7 @@ public class Service {
         if (veh == null) {
             return -1;
         }
-        IParkingCost delivery = ParkingCostFactory.getInstance().getDelivery(veh.getType());
+        IParkingCost delivery = ParkingCostFactory.getInstance().getType(veh.getType());
         long result = delivery.calculateCost(veh,input,output);
         return result;
     }

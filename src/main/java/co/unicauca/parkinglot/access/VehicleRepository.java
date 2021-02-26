@@ -10,8 +10,10 @@ import co.unicauca.parkinglot.domain.service.Service;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +28,7 @@ public class VehicleRepository implements IVehicleRepository{
     private void initDatabase() {
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS Vehicle (\n"
-                + "	VehiclePlate text PRIMARY KEY,\n"
+                + "	VehiclePlate text PRIMARY KEY\n"
                 + ");";
                 /*
                 String sql = "CREATE TABLE IF NOT EXISTS Vehicle (\n"
@@ -91,7 +93,32 @@ public class VehicleRepository implements IVehicleRepository{
         }
         return false;
     }
+    /*
+    public List<Vehicle> listProducts() {
+        
+        List<Vehicle> products = new ArrayList<>();
+        try {
 
+            String sql = "SELECT VehiclePlate, FROM Vehicle";
+            //this.connect();
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Vehicle newVehicle = new Vehicle();
+                newVehicle.setString(rs.getInt("ProductId"));
+
+                products.add(newProduct);
+            }
+            //this.disconnect();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return products;
+    
+    }
+    */
     @Override
     public List<Vehicle> list() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

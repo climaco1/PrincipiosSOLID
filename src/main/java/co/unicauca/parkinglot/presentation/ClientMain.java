@@ -13,12 +13,14 @@ import java.util.List;
 public class ClientMain {
 
     public static void main(String[] args) {
+        
         Vehicle veh = new Vehicle("FTK-123", TypeEnum.MOTO);
         
         LocalDateTime input = LocalDateTime.of(2021, Month.FEBRUARY, 22, 8, 0);
         LocalDateTime output = LocalDateTime.of(2021, Month.FEBRUARY, 22, 19, 30);
         
         IVehicleRepository repo = RepositoryFactory.getInstance().getRepository("default");
+        
         Service service = new Service(repo); //Inyección de dependencias
         
         long result = service.calculateParkingCost(veh, input, output);
