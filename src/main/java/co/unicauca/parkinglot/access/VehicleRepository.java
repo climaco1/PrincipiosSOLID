@@ -48,7 +48,7 @@ public class VehicleRepository implements IVehicleRepository{
         // Si se quiere guardar los datos a un archivo
         //String url = "jdbc:sqlite:./mydatabase.db";    
         // Guarda los datos en memoria RAM
-        String url = "jdbc:sqlite:.mydatabase.sqlite";
+        String url = "jdbc:sqlite:mydatabase.sqlite";
         try {
             conn = DriverManager.getConnection(url);
         } catch (SQLException ex) {

@@ -24,9 +24,9 @@ public class ClientMain {
         long result = service.calculateParkingCost(veh, input, output);
         
         System.out.println("Valor a pagar por la moto: " + result);
-        /*
+        
         service.saveVehicle(veh);
-       
+        /*
         veh = new Vehicle("JNK-124", TypeEnum.CAR);
         
         service.saveVehicle(veh);

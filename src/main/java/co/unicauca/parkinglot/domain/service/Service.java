@@ -22,7 +22,7 @@ public class Service {
     private IVehicleRepository repository;
 
     public Service(IVehicleRepository repository) {
-        this.repository = repository;
+        this.repository =  repository;
     }
     
     public long calculateParkingCost(Vehicle veh, LocalDateTime input, LocalDateTime output){
