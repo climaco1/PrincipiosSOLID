@@ -28,11 +28,12 @@ public class ClientMain {
         System.out.println("Valor a pagar por la moto: " + result);
         
         service.saveVehicle(veh);
-        /*
+        
         veh = new Vehicle("JNK-124", TypeEnum.CAR);
         
         service.saveVehicle(veh);
         
+        /*
         List<Vehicle> list = service.listVehicles();
         
         list.forEach(vehicle -> {
