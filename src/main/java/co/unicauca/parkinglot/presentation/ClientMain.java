@@ -13,7 +13,7 @@ import java.util.List;
 public class ClientMain {
 
     public static void main(String[] args) {
-        /*
+        
         Vehicle veh = new Vehicle("FTK-123", TypeEnum.MOTO);
         
         LocalDateTime input = LocalDateTime.of(2021, Month.FEBRUARY, 22, 8, 0);
@@ -38,6 +38,5 @@ public class ClientMain {
         list.forEach(vehicle -> {
             System.out.println(vehicle.toString());
         });
-        */
     }   
 }
