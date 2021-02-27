@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package co.unicauca.parkinglot.domain;
 
 import co.unicauca.parkinglot.access.IVehicleRepository;
@@ -6,20 +11,20 @@ import co.unicauca.parkinglot.domain.service.Service;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.List;
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
+        
 /**
  * Pruebas unitarias del parqueadero
  *
  * @author Libardo
  */
-public class ParkingTest {
+public class test {
 
     /**
      * Test of calculateCost method
      */
-    @Test
+    //@Test
     public void MotosTest() {
         System.out.println("Moto hora y media");
         Vehicle veh = new Vehicle("FTK-123", TypeEnum.MOTO);
@@ -42,7 +47,7 @@ public class ParkingTest {
         result = service.calculateParkingCost(veh, input, output);
         assertEquals(expResult, result);
     }
-
+    /*
     @Test
     public void CarTest() {
         System.out.println("Carro 2 horas y 10 minutos");
@@ -109,4 +114,5 @@ public class ParkingTest {
         assertEquals(expResult, result);
         assertEquals("QET-646", service.listVehicles().get(0).getPlate());
     }
+    */
 }
