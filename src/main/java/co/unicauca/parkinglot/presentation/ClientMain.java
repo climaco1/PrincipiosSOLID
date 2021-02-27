@@ -13,7 +13,7 @@ import java.util.List;
 public class ClientMain {
 
     public static void main(String[] args) {
-        
+        /*
         Vehicle veh = new Vehicle("FTK-123", TypeEnum.MOTO);
         
         LocalDateTime input = LocalDateTime.of(2021, Month.FEBRUARY, 22, 8, 0);
@@ -32,8 +32,7 @@ public class ClientMain {
         veh = new Vehicle("JNK-124", TypeEnum.CAR);
         
         service.saveVehicle(veh);
-        
-        /*
+              
         List<Vehicle> list = service.listVehicles();
         
         list.forEach(vehicle -> {

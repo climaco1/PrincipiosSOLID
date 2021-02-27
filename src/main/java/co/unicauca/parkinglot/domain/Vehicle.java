@@ -9,6 +9,9 @@ public class Vehicle {
         this.type = type;
     }
 
+    public Vehicle() {
+    }
+
     public String getPlate() {
         return plate;
     }
@@ -18,7 +21,7 @@ public class Vehicle {
     }
 
     public TypeEnum getType() {
-        return type;
+        return type;    
     }
 
     public void setType(TypeEnum type) {

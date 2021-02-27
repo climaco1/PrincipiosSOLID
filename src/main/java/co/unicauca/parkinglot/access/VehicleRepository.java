@@ -28,14 +28,9 @@ public class VehicleRepository implements IVehicleRepository{
     private void initDatabase() {
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS Vehicle (\n"
-                + "	VehiclePlate text PRIMARY KEY\n"
-                + ");";
-                /*
-                String sql = "CREATE TABLE IF NOT EXISTS Vehicle (\n"
                 + "	VehiclePlate text PRIMARY KEY,\n"
-                + "	Tipo text NOT NULL,\n"
+                + "	Type text NOT NULL \n"
                 + ");";
-                */
         try {
             this.connect();
             Statement stmt = conn.createStatement();
@@ -50,7 +45,7 @@ public class VehicleRepository implements IVehicleRepository{
         // Si se quiere guardar los datos a un archivo
         //String url = "jdbc:sqlite:./mydatabase.db";    
         // Guarda los datos en memoria RAM
-        String url = "jdbc:sqlite:mydatabase.sqlite";
+        String url = "jdbc:sqlite::memory:";
         try {
             conn = DriverManager.getConnection(url);
         } catch (SQLException ex) {
@@ -68,6 +63,12 @@ public class VehicleRepository implements IVehicleRepository{
         }
     }
    
+    /**
+     *
+     * @param newVehicle
+     * @return
+     */
+    @Override
     public boolean save(Vehicle newVehicle) {
         try {
             //Validate product
@@ -75,16 +76,12 @@ public class VehicleRepository implements IVehicleRepository{
                 return false;
             }
             //this.connect();
-            /*
-            String sql = "INSERT INTO Vehicle ( VehiclePlate, Tipo ) "
+            String sql = "INSERT INTO Vehicle ( VehiclePlate, Type ) "
                     + "VALUES ( ?, ? )";
-            */
-            String sql = "INSERT INTO Vehicle ( VehiclePlate ) "
-                    + "VALUES ( ? )";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, newVehicle.getPlate());
-            //pstmt.set(2, newVehicle.getType());
+            pstmt.setString(2, newVehicle.getType().toString());
             pstmt.executeUpdate();
             //this.disconnect();
             return true;
@@ -93,35 +90,30 @@ public class VehicleRepository implements IVehicleRepository{
         }
         return false;
     }
-    /*
-    public List<Vehicle> listProducts() {
+    
+    /**
+     *
+     * @return
+     */
+    @Override
+    public List<Vehicle> list() {
         
-        List<Vehicle> products = new ArrayList<>();
+        List<Vehicle> vehicles = new ArrayList<>();
         try {
-
-            String sql = "SELECT VehiclePlate, FROM Vehicle";
+            String sql = "SELECT VehiclePlate, type FROM Vehicle";
             //this.connect();
-
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+            ResultSet rs = stmt.executeQuery(sql);     
             while (rs.next()) {
                 Vehicle newVehicle = new Vehicle();
-                newVehicle.setString(rs.getInt("ProductId"));
-
-                products.add(newProduct);
+                newVehicle.setPlate(rs.getString("VehiclePlate"));
+                //newVehicle.setType(rs.getString("Type"));
+                vehicles.add(newVehicle);
             }
             //this.disconnect();
-
         } catch (SQLException ex) {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return products;
-    
-    }
-    */
-    @Override
-    public List<Vehicle> list() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+        return vehicles;
+    }  
 }
