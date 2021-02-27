@@ -6,7 +6,6 @@ co\unicauca\parkinglot\domain\TypeEnum.class
 co\unicauca\parkinglot\access\IVehicleRepository.class
 co\unicauca\parkinglot\domain\IParkingCost.class
 co\unicauca\parkinglot\domain\service\Service.class
-co\unicauca\parkinglot\access\gh.class
 co\unicauca\parkinglot\presentation\ClientMain.class
 co\unicauca\parkinglot\infra\Utilities.class
 co\unicauca\parkinglot\access\VehicleRepository.class

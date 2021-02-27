@@ -14,6 +14,16 @@ import java.time.LocalDateTime;
 public class CarParkingCost implements IParkingCost{
     @Override
     public long calculateCost(Vehicle veh, LocalDateTime input, LocalDateTime output){
-        return 0;
+        long result = 0;
+        
+        int totalHoras = output.getHour() - input.getHour();
+        int minutosTranscurridos = output.getMinute() - input.getMinute();
+        
+        if(totalHoras <= 1 && minutosTranscurridos <= 0){
+            result = 2000;
+        }else{
+            result = 2000 + (((totalHoras-1)*60 + minutosTranscurridos) * 1000)/60;
+        }
+        return result;
     }
 }
