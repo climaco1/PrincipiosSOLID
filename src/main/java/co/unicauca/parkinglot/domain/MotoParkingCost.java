@@ -14,15 +14,17 @@ import java.time.LocalDateTime;
 public class MotoParkingCost implements IParkingCost {
     @Override
     public long calculateCost(Vehicle veh, LocalDateTime input, LocalDateTime output){
-        long result;
-        /*
-        int hora_entrada = input.getHour(),hora_salida = input.getHour();
-        if(hora_salida - hora_entrada <= 1){
+        long result = 0;
+        
+        int totalHoras = output.getHour() - input.getHour();
+        int minutosTranscurridos = output.getMinute() - input.getMinute();
+        
+        if(totalHoras <= 1 && minutosTranscurridos <= 0){
             result = 1000;
         }else{
-            result = 3600;
+            result = 500 + ((totalHoras*60 + minutosTranscurridos) * 500)/60;
         }
-        */
-        return 6300;
+        
+        return result;
     }
 }
