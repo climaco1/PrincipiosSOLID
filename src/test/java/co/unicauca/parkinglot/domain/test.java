@@ -11,8 +11,8 @@ import co.unicauca.parkinglot.domain.service.Service;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.List;
-//import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
+import static org.junit.Assert.*;
         
 /**
  * Pruebas unitarias del parqueadero
@@ -24,7 +24,7 @@ public class test {
     /**
      * Test of calculateCost method
      */
-    //@Test
+    @Test
     public void MotosTest() {
         System.out.println("Moto hora y media");
         Vehicle veh = new Vehicle("FTK-123", TypeEnum.MOTO);
@@ -47,7 +47,7 @@ public class test {
         result = service.calculateParkingCost(veh, input, output);
         assertEquals(expResult, result);
     }
-    /*
+    
     @Test
     public void CarTest() {
         System.out.println("Carro 2 horas y 10 minutos");
@@ -114,5 +114,4 @@ public class test {
         assertEquals(expResult, result);
         assertEquals("QET-646", service.listVehicles().get(0).getPlate());
     }
-    */
 }
