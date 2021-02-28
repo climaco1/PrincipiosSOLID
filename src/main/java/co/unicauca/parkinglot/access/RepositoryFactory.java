@@ -6,6 +6,7 @@
 package co.unicauca.parkinglot.access;
 
 public class RepositoryFactory {
+
     private static RepositoryFactory instance;
 
     private RepositoryFactory() {
@@ -24,6 +25,7 @@ public class RepositoryFactory {
         return instance;
 
     }
+
     /**
      * Método que crea una instancia concreta de la jerarquia IVehicleRepository
      *

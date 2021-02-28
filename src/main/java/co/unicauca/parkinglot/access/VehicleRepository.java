@@ -7,6 +7,7 @@ package co.unicauca.parkinglot.access;
 
 import co.unicauca.parkinglot.domain.Vehicle;
 import co.unicauca.parkinglot.domain.service.Service;
+import co.unicauca.parkinglot.infra.Utilities;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,13 +19,14 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class VehicleRepository implements IVehicleRepository{
+public class VehicleRepository implements IVehicleRepository {
+
     private Connection conn;
 
     public VehicleRepository() {
         initDatabase();
     }
-    
+
     private void initDatabase() {
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS Vehicle (\n"
@@ -40,7 +42,7 @@ public class VehicleRepository implements IVehicleRepository{
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void connect() {
         // Si se quiere guardar los datos a un archivo
         //String url = "jdbc:sqlite:./mydatabase.db";    
@@ -52,7 +54,7 @@ public class VehicleRepository implements IVehicleRepository{
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void disconnect() {
         try {
             if (conn != null) {
@@ -62,7 +64,7 @@ public class VehicleRepository implements IVehicleRepository{
             System.out.println(ex.getMessage());
         }
     }
-   
+
     /**
      *
      * @param newVehicle
@@ -90,24 +92,26 @@ public class VehicleRepository implements IVehicleRepository{
         }
         return false;
     }
-    
+
     /**
      *
      * @return
      */
     @Override
     public List<Vehicle> list() {
-        
+
+        Utilities obj = new Utilities();
+
         List<Vehicle> vehicles = new ArrayList<>();
         try {
             String sql = "SELECT VehiclePlate, type FROM Vehicle";
             //this.connect();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);     
+            ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 Vehicle newVehicle = new Vehicle();
                 newVehicle.setPlate(rs.getString("VehiclePlate"));
-                //newVehicle.setType(rs.getString("Type"));
+                newVehicle.setType(obj.string_to_enum(rs.getString("Type")));
                 vehicles.add(newVehicle);
             }
             //this.disconnect();
@@ -115,5 +119,5 @@ public class VehicleRepository implements IVehicleRepository{
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
         return vehicles;
-    }  
+    }
 }

@@ -32,7 +32,7 @@ public class TruckParkingCost implements IParkingCost {
                     result = 15000 + (((totalDias-1)*24 + totalHoras) * 15000)/24;
                 }    
             }
-            return result;
+            return ((result + 99) / 100 ) * 100;
         }
     }
     

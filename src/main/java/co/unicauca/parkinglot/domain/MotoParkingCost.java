@@ -6,6 +6,7 @@
 package co.unicauca.parkinglot.domain;
 
 import java.time.LocalDateTime;
+import java.time.Duration;
 
 /**
  *
@@ -14,17 +15,19 @@ import java.time.LocalDateTime;
 public class MotoParkingCost implements IParkingCost {
 
     @Override
-    public long calculateCost(Vehicle veh, LocalDateTime input, LocalDateTime output){
+    public long calculateCost(Vehicle veh, LocalDateTime input, LocalDateTime output) {
         long result = 0;
-        
-        int totalHoras = output.getHour() - input.getHour();
-        int minutosTranscurridos = output.getMinute() - input.getMinute();
-        
-        if(totalHoras <= 1 && minutosTranscurridos <= 0){
+
+        Duration duration = Duration.between(input, output);
+        long minutosTotales = duration.toMinutes();
+        long minutosTranscurridos = output.getMinute() - input.getMinute();
+        long totalHoras = duration.toHours();
+
+        if (minutosTotales <= 60) {
             result = 1000;
-        }else{
-            result = 1000 + (((totalHoras-1)*60 + minutosTranscurridos) * 500)/60;
+        } else {
+            result = 1000 + (((totalHoras - 1) * 60 + minutosTranscurridos) * 500) / 60;
         }
-        return result;
+        return ((result + 99) / 100) * 100;
     }
 }
