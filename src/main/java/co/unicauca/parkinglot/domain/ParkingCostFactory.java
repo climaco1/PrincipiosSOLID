@@ -20,19 +20,12 @@ public class ParkingCostFactory {
 
     // Singleton
     private static ParkingCostFactory instance;
-   
-    private ParkingCostFactory() {
-        dictionary = new EnumMap<>(TypeEnum.class);
-        dictionary.put(TypeEnum.CAR, new CarParkingCost());
-        dictionary.put(TypeEnum.MOTO, new MotoParkingCost());
-        dictionary.put(TypeEnum.TRUCK, new TruckParkingCost());
-        
-    }
-     /**
-     * Devuelve la instancia de la clase
-     *
-     * @return instancia unica de la la fábrica
-     */
+    
+    /**
+    * Devuelve la instancia de la clase
+    *
+    * @return instancia unica de ParkingCostFactory
+    */
     public static ParkingCostFactory getInstance() {
         if (instance == null) {
             instance = new ParkingCostFactory();
@@ -40,6 +33,22 @@ public class ParkingCostFactory {
         return instance;
     }
     
+    /**
+    * Diccionario
+    */
+    private ParkingCostFactory() {
+        dictionary = new EnumMap<>(TypeEnum.class);
+        dictionary.put(TypeEnum.CAR, new CarParkingCost());
+        dictionary.put(TypeEnum.MOTO, new MotoParkingCost());
+        dictionary.put(TypeEnum.TRUCK, new TruckParkingCost());
+        
+    }
+    
+    /**
+     * instancia de iparkingcost para un TypeEnum
+     * @param type
+     * @return retorna una instancia de iparkingcost para calcular el costo
+     */
     public IParkingCost getType(TypeEnum type) {
         IParkingCost result = null;
         if (dictionary.containsKey(type)) {

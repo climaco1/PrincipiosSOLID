@@ -20,13 +20,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class VehicleRepository implements IVehicleRepository {
-
+    
+    //bd
     private Connection conn;
-
+    
+    /**
+     * constructor sin parametros
+     */
     public VehicleRepository() {
         initDatabase();
     }
-
+    
+    /**
+     * Inicializacion de la base de datos
+     */
     private void initDatabase() {
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS Vehicle (\n"
@@ -42,7 +49,10 @@ public class VehicleRepository implements IVehicleRepository {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    /**
+     * Conexion a la base de datos
+     */
     public void connect() {
         // Si se quiere guardar los datos a un archivo
         //String url = "jdbc:sqlite:./mydatabase.db";    
@@ -54,7 +64,9 @@ public class VehicleRepository implements IVehicleRepository {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    /**
+     * Desconexion de la base de datos
+     */
     public void disconnect() {
         try {
             if (conn != null) {
@@ -66,9 +78,9 @@ public class VehicleRepository implements IVehicleRepository {
     }
 
     /**
-     *
+     * Guarda un vehiculo en la tabla Vehicle
      * @param newVehicle
-     * @return
+     * @return boolean
      */
     @Override
     public boolean save(Vehicle newVehicle) {
@@ -94,14 +106,13 @@ public class VehicleRepository implements IVehicleRepository {
     }
 
     /**
-     *
-     * @return
+     * Lista la tabla Vehicle de la bd
+     * @return Lista de vehiculos
      */
     @Override
     public List<Vehicle> list() {
 
-        Utilities obj = new Utilities();
-
+        
         List<Vehicle> vehicles = new ArrayList<>();
         try {
             String sql = "SELECT VehiclePlate, type FROM Vehicle";
@@ -111,7 +122,7 @@ public class VehicleRepository implements IVehicleRepository {
             while (rs.next()) {
                 Vehicle newVehicle = new Vehicle();
                 newVehicle.setPlate(rs.getString("VehiclePlate"));
-                newVehicle.setType(obj.string_to_enum(rs.getString("Type")));
+                newVehicle.setType(Utilities.getInstance().string_to_enum(rs.getString("Type")));
                 vehicles.add(newVehicle);
             }
             //this.disconnect();

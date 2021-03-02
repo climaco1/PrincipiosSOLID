@@ -10,9 +10,16 @@ import java.time.LocalDateTime;
 
 /**
  *
- * @author fermt
+ * @author cristiancast
  */
 public class CarParkingCost implements IParkingCost{
+    /**
+     * Calcula el costo de parqueo por minuto
+     * @param veh
+     * @param input
+     * @param output
+     * @return Costo por minuto
+     */
     @Override
     public long calculateCost(Vehicle veh, LocalDateTime input, LocalDateTime output){
         long result;
