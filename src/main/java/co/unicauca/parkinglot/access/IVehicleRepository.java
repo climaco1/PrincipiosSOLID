@@ -9,6 +9,8 @@ import co.unicauca.parkinglot.domain.Vehicle;
 import java.util.List;
 
 public interface IVehicleRepository {
-    boolean save(Vehicle newVehicle);   
+
+    boolean save(Vehicle newVehicle);
+
     List<Vehicle> list();
 }

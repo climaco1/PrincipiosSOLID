@@ -20,17 +20,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class VehicleRepository implements IVehicleRepository {
-    
+
     //bd
     private Connection conn;
-    
+
     /**
      * constructor sin parametros
      */
     public VehicleRepository() {
         initDatabase();
     }
-    
+
     /**
      * Inicializacion de la base de datos
      */
@@ -49,7 +49,7 @@ public class VehicleRepository implements IVehicleRepository {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * Conexion a la base de datos
      */
@@ -64,6 +64,7 @@ public class VehicleRepository implements IVehicleRepository {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     /**
      * Desconexion de la base de datos
      */
@@ -79,6 +80,7 @@ public class VehicleRepository implements IVehicleRepository {
 
     /**
      * Guarda un vehiculo en la tabla Vehicle
+     *
      * @param newVehicle
      * @return boolean
      */
@@ -107,12 +109,12 @@ public class VehicleRepository implements IVehicleRepository {
 
     /**
      * Lista la tabla Vehicle de la bd
+     *
      * @return Lista de vehiculos
      */
     @Override
     public List<Vehicle> list() {
 
-        
         List<Vehicle> vehicles = new ArrayList<>();
         try {
             String sql = "SELECT VehiclePlate, type FROM Vehicle";

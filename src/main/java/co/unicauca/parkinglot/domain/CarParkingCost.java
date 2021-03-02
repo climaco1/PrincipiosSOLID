@@ -12,28 +12,30 @@ import java.time.LocalDateTime;
  *
  * @author cristiancast
  */
-public class CarParkingCost implements IParkingCost{
+public class CarParkingCost implements IParkingCost {
+
     /**
      * Calcula el costo de parqueo por minuto
+     *
      * @param veh
      * @param input
      * @param output
      * @return Costo por minuto
      */
     @Override
-    public long calculateCost(Vehicle veh, LocalDateTime input, LocalDateTime output){
+    public long calculateCost(Vehicle veh, LocalDateTime input, LocalDateTime output) {
         long result;
-        
+
         Duration duration = Duration.between(input, output);
         long minutosTotales = duration.toMinutes();
         long minutosTranscurridos = output.getMinute() - input.getMinute();
         long totalHoras = duration.toHours();
-        
-        if(minutosTotales <= 60){
+
+        if (minutosTotales <= 60) {
             result = 2000;
-        }else{
-            result = 2000 + (((totalHoras-1)*60 + minutosTranscurridos) * 1000)/60;
+        } else {
+            result = 2000 + (((totalHoras - 1) * 60 + minutosTranscurridos) * 1000) / 60;
         }
-        return ((result + 99) / 100 ) * 100;
+        return ((result + 99) / 100) * 100;
     }
 }

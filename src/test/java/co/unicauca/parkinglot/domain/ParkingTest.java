@@ -13,7 +13,7 @@ import java.time.Month;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-        
+
 /**
  * Pruebas unitarias del parqueadero
  *
@@ -47,7 +47,7 @@ public class ParkingTest {
         result = service.calculateParkingCost(veh, input, output);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void CarTest() {
         System.out.println("Carro 2 horas y 10 minutos");

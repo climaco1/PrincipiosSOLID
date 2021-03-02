@@ -13,8 +13,10 @@ import java.time.Duration;
  * @author cristiancast
  */
 public class MotoParkingCost implements IParkingCost {
+
     /**
      * Calcula el costo de parqueo por minuto
+     *
      * @param veh
      * @param input
      * @param output
