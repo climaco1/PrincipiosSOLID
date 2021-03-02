@@ -11,8 +11,8 @@ import co.unicauca.parkinglot.domain.service.Service;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.List;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
         
 /**
  * Pruebas unitarias del parqueadero
